@@ -1,6 +1,10 @@
 // Branden has firebase control
+
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 var firebaseConfig = {
-  apiKey: firebase.apiKey,
+  apiKey: "AIzaSyByu_7sv8S3JRoqjQ8wApeCj89z5wmvZDg",
   authDomain: "employee-scheduler-402b9.firebaseapp.com",
   databaseURL: "https://employee-scheduler-402b9.firebaseio.com",
   projectId: "employee-scheduler-402b9",
@@ -43,5 +47,15 @@ function addUser() {
   // })
 }
 addUser()
+
+
+const msg = {
+  to: 'roakley1@villanova.edu',
+  from: 'alexschu90@gmail.com',
+  subject: 'Sending with Twilio SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+};
+sgMail.send(msg);
 
 

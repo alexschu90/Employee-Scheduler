@@ -1,0 +1,23 @@
+{
+  "name": "Employee-Scheduler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexschu90/Employee-Scheduler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexschu90/Employee-Scheduler/issues"
+  },
+  "homepage": "https://github.com/alexschu90/Employee-Scheduler#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^6.5.1"
+  }
+}
