@@ -18,6 +18,20 @@
 
 </head>
 <body>
+
+
+    <div class="d-flex fixed-left" id="wrapper">
+        <!-- Sidebar -->
+        <div class="fixed-left bg-light border-right" id="sidebar-wrapper sidebar">
+          <div class="sidebar-heading"> Page Nav </div>
+          <div class="list-group list-group-flush">
+            <a href="#current-employee" class="list-group-item list-group-item-action bg-light">Current Employees</a>
+            <a href="#add-employee" class="list-group-item list-group-item-action bg-light">Add Employee</a>
+            <a href="#calandar" class="list-group-item list-group-item-action bg-light">Calandar</a>
+          </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
     <div class="container">
         <div class="jumbotron bg-primary">
             <h1 class="header text-center text-white display-4">Employee Scheduler</h1>
@@ -30,7 +44,7 @@
         <!-- Employee Table -->
         <div class="container border border-dark rounded bg-white my-2 pb-2">
             <div class="row">
-                <div class="col-lg-12 top text-light bg-primary p-2 pb-0">
+                <div id="current-employees" class="col-lg-12 top text-light bg-primary p-2 pb-0">
                     Current Employees
                 </div>
             </div>
@@ -54,7 +68,7 @@
         <!-- form container -->
         <div class="container border border-dark bg-white rounded my-2 pb-2">
             <div class="row">
-                <div class="col-lg-12 top text-light bg-primary p-2">Add Employee</div>
+                <div id="add-employee" class="col-lg-12 top text-light bg-primary p-2">Add Employee</div>
             </div>
             <form>
                 <div class="form-group">
@@ -84,7 +98,7 @@
         <!-- schedule container -->
         <div class="container border border-dark bg-white rounded my-2 pb-2">
             <div class="row">
-                <div class="col-lg-12 top text-light bg-primary p-2">Scheule Goes Here</div>
+                <div id="calandar" class="col-lg-12 top text-light bg-primary p-2">Scheule Goes Here</div>
             </div>
             <!-- schedule will populte here -->
             <div id="schedule-div"></div>
