@@ -1,106 +1,84 @@
-
 // Nav bar scripts
 var themes = [
-    'cerulean',
-    'cosmo',
-    'cyborg',
-    'darkly',
-    'flatly',
-    'journal',
-    'litera',
-    'lumen',
-    'lux',
-    'materia',
-    'minty',
-    'pulse',
-    'sandstone',
-    'simplex',
-    'sketchy',
-    'slate',
-    'solar',
-    'spacelab',
-    'superhero',
-    'united',
-    'yeti'
+	'cerulean',
+	'cosmo',
+	'cyborg',
+	'darkly',
+	'flatly',
+	'journal',
+	'litera',
+	'lumen',
+	'lux',
+	'materia',
+	'minty',
+	'pulse',
+	'sandstone',
+	'simplex',
+	'sketchy',
+	'slate',
+	'solar',
+	'spacelab',
+	'superhero',
+	'united',
+	'yeti'
 ];
 
 $(document).ready(function () {
-    $('[data-class]').click(function () {
-        updateNavbarClass($(this).attr('data-class'));
-    });
+	$('[data-class]').click(function () {
+		updateNavbarClass($(this).attr('data-class'));
+	});
 
-    updateNavbarClass('fixed-left');
+	updateNavbarClass('fixed-left');
 
-    themes.forEach(function (theme) {
-        $('#theme_select').append($('<option>', {
-            value: theme,
-            text: theme.charAt(0).toUpperCase() + theme.slice(1),
-            selected: theme === 'materia'
-        }));
-    });
+	themes.forEach(function (theme) {
+		$('#theme_select').append(
+			$('<option>', {
+				value    : theme,
+				text     : theme.charAt(0).toUpperCase() + theme.slice(1),
+				selected : theme === 'materia'
+			})
+		);
+	});
+	$('#add-employee-form').hide();
 });
 
-function updateNavbarClass(className) {
-    $('nav')
-        .removeClass(function (index, css) {
-            return (css.match(/(^|\s)fixed-\S+/g) || []).join(' ');
-        })
-        .addClass(className);
+$('#show-form').on('click', function () {
+	$('#add-employee-form').show();
+});
 
-    $('[data-class]').removeClass('active').parent('li').removeClass('active');
-    $('[data-class="' + className + '"]').addClass('active').parent('li').addClass('active');
+function updateNavbarClass (className) {
+	$('nav')
+		.removeClass(function (index, css) {
+			return (css.match(/(^|\s)fixed-\S+/g) || []).join(' ');
+		})
+		.addClass(className);
 
-    fixBodyMargin(className);
+	$('[data-class]').removeClass('active').parent('li').removeClass('active');
+	$('[data-class="' + className + '"]').addClass('active').parent('li').addClass('active');
+
+	fixBodyMargin(className);
 }
 
-function fixBodyMargin(className) {
-    if (/fixed-(left|right)/.test(className)) {
-        $('body').removeAttr('style');
-        if (className === 'fixed-right') {
-            $('body').css('marginLeft', 0);
-        } else {
-            $('body').css('marginRight', 0);
-        }
-    } else {
-        $('body').css({
-            "margin-right": 0,
-            "margin-left": 0,
-            "padding-top": '90px'
-        });
-    }
+function fixBodyMargin (className) {
+	if (/fixed-(left|right)/.test(className)) {
+		$('body').removeAttr('style');
+		if (className === 'fixed-right') {
+			$('body').css('marginLeft', 0);
+		} else {
+			$('body').css('marginRight', 0);
+		}
+	} else {
+		$('body').css({
+			'margin-right' : 0,
+			'margin-left'  : 0,
+			'padding-top'  : '90px'
+		});
+	}
 }
 
-function selectTheme(theme) {
-    $('#theme_link').attr('href', 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/' + theme + '/bootstrap.min.css');
+function selectTheme (theme) {
+	$('#theme_link').attr(
+		'href',
+		'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/' + theme + '/bootstrap.min.css'
+	);
 }
-
-// var employee = {
-// 	name        : 'Branden Patten',
-// 	phoneNumber : '(239)-699-2087',
-// 	email       : 'patte.branden@gmail.com',
-// 	age         : 26,
-// 	roles       : [ 'baker', 'bakery clerk', 'cake decorator', 'cashier' ],
-// 	account     : {
-// 		username : 'username',
-// 		password : 'badplaintextpassword'
-// 	}
-// };
-
-// function addUser () {
-// 	var timestamp = firebase.database.ServerValue.TIMESTAMP;
-// 	database.ref().child('employee').push({
-// 		fullName    : employee.name,
-// 		email       : employee.email,
-// 		age         : employee.age,
-// 		phoneNumber : employee.phoneNumber,
-// 		roles       : employee.roles,
-// 		username    : employee.account.username,
-// 		password    : employee.account.password,
-// 		dateAdded   : timestamp
-// 	});
-
-// 	// database.ref("/login").push({
-// 	//   dateAdded: timestamp
-// 	// })
-// }
-// addUser();
