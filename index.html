@@ -11,26 +11,78 @@
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/javascript/logic.js"></script>
     <!-- CSS styles  -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet"
+    id="theme_link"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/materia/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/navbar-fixed-right.min.css">
+    <link rel="stylesheet" href="assets/css/navbar-fixed-left.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 </head>
 <body>
 
-
-    <div class="d-flex fixed-left" id="wrapper">
-        <!-- Sidebar -->
-        <div class="fixed-left bg-light border-right" id="sidebar-wrapper sidebar">
-          <div class="sidebar-heading"> Page Nav </div>
-          <div class="list-group list-group-flush">
-            <a href="#current-employee" class="list-group-item list-group-item-action bg-light">Current Employees</a>
-            <a href="#add-employee" class="list-group-item list-group-item-action bg-light">Add Employee</a>
-            <a href="#calandar" class="list-group-item list-group-item-action bg-light">Calandar</a>
-          </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href>Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">Action</a>
+                        <a class="dropdown-item">Another action</a>
+                        <a class="dropdown-item">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">Separated link</a>
+                        <a class="dropdown-item">One more separated link</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-class="fixed-left">
+                        <i class="fa fa-arrow-left"></i>
+                        Fixed Left
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-class="fixed-top">
+                        <i class="fa fa-arrow-up"></i>
+                        Fixed Top
+                        <small>(original)</small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-class="fixed-right">
+                        <i class="fa fa-arrow-right"></i>
+                        Fixed Right
+                    </a>
+                </li>
+            </ul>
         </div>
-        <!-- /#sidebar-wrapper -->
+    </nav>
 
     <div class="container">
         <div class="jumbotron bg-primary">
@@ -122,5 +174,6 @@
     
     <script src="assets/javascript/config.js"></script>
     <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/firebase.js"></script>
 </body>
 </html>
