@@ -1,54 +1,78 @@
-// Branden has firebase control
-var firebaseConfig = {
-	apiKey            : firebase.apiKey,
-	authDomain        : 'employee-scheduler-402b9.firebaseapp.com',
-	databaseURL       : 'https://employee-scheduler-402b9.firebaseio.com',
-	projectId         : 'employee-scheduler-402b9',
-	storageBucket     : 'employee-scheduler-402b9.appspot.com',
-	messagingSenderId : '336373202513',
-	appId             : '1:336373202513:web:d24ebf56b4a074ffd74270'
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
 
-$('#add-employee').on('click', function (event) {
-	// Prevent the default form submit behavior
-	event.preventDefault();
-	// Grabs user input
-	var employeeName = $('#employee-name').val().trim();
-	var role = $('#role').val().trim();
-	var phone = $('#phone-number-form').val().trim();
-	var email = $('#email-form').val().trim();
+// Nav bar scripts
+var themes = [
+    'cerulean',
+    'cosmo',
+    'cyborg',
+    'darkly',
+    'flatly',
+    'journal',
+    'litera',
+    'lumen',
+    'lux',
+    'materia',
+    'minty',
+    'pulse',
+    'sandstone',
+    'simplex',
+    'sketchy',
+    'slate',
+    'solar',
+    'spacelab',
+    'superhero',
+    'united',
+    'yeti'
+];
 
-	var newEmployee = {
-		employeeName : employeeName,
-		role         : role,
-		phone        : phone,
-		email        : email
-	};
+$(document).ready(function () {
+    $('[data-class]').click(function () {
+        updateNavbarClass($(this).attr('data-class'));
+    });
 
-	database.ref().push(newEmployee);
+    updateNavbarClass('fixed-left');
 
-	$('#employee-name').val('');
-	$('#role').val('');
-	$('#phone-number-form').val('');
-	$('#email-form').val('');
+    themes.forEach(function (theme) {
+        $('#theme_select').append($('<option>', {
+            value: theme,
+            text: theme.charAt(0).toUpperCase() + theme.slice(1),
+            selected: theme === 'materia'
+        }));
+    });
 });
 
-database.ref().on('child_added', function (childSnapshot, prevChildKey) {
-	console.log(childSnapshot.val());
+function updateNavbarClass(className) {
+    $('nav')
+        .removeClass(function (index, css) {
+            return (css.match(/(^|\s)fixed-\S+/g) || []).join(' ');
+        })
+        .addClass(className);
 
-	// Store everything into a variable.
-	var eName = childSnapshot.val().employeeName;
-	var eRole = childSnapshot.val().role;
-	var ePhone = childSnapshot.val().phone;
-	var eEmail = childSnapshot.val().email;
+    $('[data-class]').removeClass('active').parent('li').removeClass('active');
+    $('[data-class="' + className + '"]').addClass('active').parent('li').addClass('active');
 
-	$('#employee-table > tbody').append(
-		$('<tr>').append($('<td>').text(eName), $('<td>').text(eRole), $('<td>').text(ePhone), $('<td>').text(eEmail))
-	);
-});
+    fixBodyMargin(className);
+}
+
+function fixBodyMargin(className) {
+    if (/fixed-(left|right)/.test(className)) {
+        $('body').removeAttr('style');
+        if (className === 'fixed-right') {
+            $('body').css('marginLeft', 0);
+        } else {
+            $('body').css('marginRight', 0);
+        }
+    } else {
+        $('body').css({
+            "margin-right": 0,
+            "margin-left": 0,
+            "padding-top": '90px'
+        });
+    }
+}
+
+function selectTheme(theme) {
+    $('#theme_link').attr('href', 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/' + theme + '/bootstrap.min.css');
+}
 
 // var employee = {
 // 	name        : 'Branden Patten',
