@@ -12,7 +12,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
-$('#add-employee').on('click', function (event) {
+$('#submit-employee').on('click', function (event) {
 	// Prevent the default form submit behavior
 	event.preventDefault();
 	// Grabs user input
