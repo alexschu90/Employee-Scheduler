@@ -41,10 +41,17 @@ $(document).ready(function () {
 	});
 	$('#add-employee-form').hide();
 });
-
+// shows the add employee form when clicked in the navbar 
+// $('#show-form').on('click', function () {
+// 	$('#add-employee-form').show();
+// });
 $('#show-form').on('click', function () {
-	$('#add-employee-form').show();
+	var table = $(this).attr("data-id")
+	table.show();
 });
+// $('#show-form').on('click', function () {
+// 	$('#add-employee-form').show();
+// });
 
 function updateNavbarClass (className) {
 	$('nav')
@@ -58,7 +65,7 @@ function updateNavbarClass (className) {
 
 	fixBodyMargin(className);
 }
-
+// sets the navbar to the left or right 
 function fixBodyMargin (className) {
 	if (/fixed-(left|right)/.test(className)) {
 		$('body').removeAttr('style');
