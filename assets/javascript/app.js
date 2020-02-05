@@ -46,6 +46,10 @@ $('#show-form').on('click', function () {
 	$('#add-employee-form').show();
 });
 
+$('#hide-employee-form').on('click', function () {
+	$('#add-employee-form').hide();
+});
+
 function updateNavbarClass (className) {
 	$('nav')
 		.removeClass(function (index, css) {
