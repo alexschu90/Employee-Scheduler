@@ -1,6 +1,10 @@
   
 body {
     min-height: 200vh;
+    background-image: url("../images/4358773.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
   }
   
   a {

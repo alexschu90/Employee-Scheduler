@@ -24,21 +24,30 @@ $('#submit-employee').on('click', function (event) {
 	var email = $('#email-form').val().trim();
 
 
-	// This function checks the phone field and if it's a valid phone-number, returns true 
+	// This function checks the phone field and if it's a valid phone-number, returns true. 
 	function validPhoneNumber(phone) {
 		var phoneNumberPattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 		console.log("local variable phone = " + phone)
 		console.log("is this a valid number? " + phoneNumberPattern.test(phone))
 		return phoneNumberPattern.test(phone);
 	};
+	// This function checks the eMail field and if it's a valid eMail address, returns true. 
+	function validEmailAdress(email) {
+		var phoneNumberPattern = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+		console.log("local variable phone = " + email)
+		console.log("is this a valid number? " + phoneNumberPattern.test(email))
+		return phoneNumberPattern.test(email);
+	};
+
+	/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
 	if (validPhoneNumber(phone) === true) {
+		if (validEmailAdress(email) === true){
 		var newEmployee = {
 			employeeName: employeeName,
 			role: role,
 			phone: phone,
 			email: email
-		};
-		console.log(phone + " is a valid phone number")
+		}
 
 
 		database.ref().push(newEmployee);
@@ -48,9 +57,11 @@ $('#submit-employee').on('click', function (event) {
 		$('#phone-number-form').val('');
 		$('#email-form').val('');
 
-
-	} else { alert(phone + " is not a valid phone-number!") }
-});
+// FIX THIS  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	} else { alert(email + " is not a valid email address!")}
+		console.log(phone + " is a valid phone number")
+		 else { alert(phone + " is not a valid phone-number!") }
+}});
 	database.ref().on('child_added', function (childSnapshot, prevChildKey) {
 		console.log(childSnapshot.val());
 
