@@ -40,7 +40,7 @@ $(document).ready(function () {
 		);
 	});
 	$('#add-employee-form').hide();
-	$('#calandar').hide()
+	$('#current-employees').hide()
 });
 // shows the add employee form when clicked in the navbar 
 // $('#show-form').on('click', function () {

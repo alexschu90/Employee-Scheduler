@@ -33,45 +33,45 @@ $('#submit-employee').on('click', function (event) {
 	};
 	// This function checks the eMail field and if it's a valid eMail address, returns true. 
 	function validEmailAdress(email) {
-		var phoneNumberPattern = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
-		console.log("local variable phone = " + email)
-		console.log("is this a valid number? " + phoneNumberPattern.test(email))
-		return phoneNumberPattern.test(email);
+		var emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		console.log("local variable email = " + email)
+		console.log("is this a valid email? " + emailPattern.test(email))
+		return emailPattern.test(email);
 	};
 
-	/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
+	// /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
 	if (validPhoneNumber(phone) === true) {
-		if (validEmailAdress(email) === true){
-		var newEmployee = {
-			employeeName: employeeName,
-			role: role,
-			phone: phone,
-			email: email
-		}
+		if (validEmailAdress(email) === true) {
+			var newEmployee = {
+				employeeName: employeeName,
+				role: role,
+				phone: phone,
+				email: email
+			}
 
 
-		database.ref().push(newEmployee);
+			database.ref().push(newEmployee);
 
-		$('#employee-name').val('');
-		$('#role').val('');
-		$('#phone-number-form').val('');
-		$('#email-form').val('');
+			$('#employee-name').val('');
+			$('#role').val('');
+			$('#phone-number-form').val('');
+			$('#email-form').val('');
 
-// FIX THIS  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	} else { alert(email + " is not a valid email address!")}
+			// FIX THIS  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		} else { alert(email + " is not a valid email address!") }
 		console.log(phone + " is a valid phone number")
-		 else { alert(phone + " is not a valid phone-number!") }
-}});
-	database.ref().on('child_added', function (childSnapshot, prevChildKey) {
-		console.log(childSnapshot.val());
+	} else { alert(phone + " is not a valid phone-number!") }
+});
+database.ref().on('child_added', function (childSnapshot, prevChildKey) {
+	console.log(childSnapshot.val());
 
-		// Store everything into a variable.
-		var eName = childSnapshot.val().employeeName;
-		var eRole = childSnapshot.val().role;
-		var ePhone = childSnapshot.val().phone;
-		var eEmail = childSnapshot.val().email;
+	// Store everything into a variable.
+	var eName = childSnapshot.val().employeeName;
+	var eRole = childSnapshot.val().role;
+	var ePhone = childSnapshot.val().phone;
+	var eEmail = childSnapshot.val().email;
 
-		$('#employee-table > tbody').append(
-			$('<tr>').append($('<td>').text(eName), $('<td>').text(eRole), $('<td>').text(ePhone), $('<td>').text(eEmail))
-		);
-	})
+	$('#employee-table > tbody').append(
+		$('<tr>').append($('<td>').text(eName), $('<td>').text(eRole), $('<td>').text(ePhone), $('<td>').text(eEmail))
+	);
+})
