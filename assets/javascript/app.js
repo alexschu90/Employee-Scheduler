@@ -40,18 +40,21 @@ $(document).ready(function () {
 		);
 	});
 	$('#add-employee-form').hide();
+	$('#calandar').hide()
 });
 // shows the add employee form when clicked in the navbar 
 // $('#show-form').on('click', function () {
 // 	$('#add-employee-form').show();
 // });
-$('#show-form').on('click', function () {
-	var table = $(this).attr("data-id")
-	table.show();
+$('.nav-item').on('click', function () {
+	// $('#add-employee-form').hide();
+	// $('#calandar').hide()
+	// $('#current-employees').hide()
+	$(".showhide").hide()
+	item = $(this).attr('data-show-this')
+	console.log(item)
+	$(item).show()
 });
-// $('#show-form').on('click', function () {
-// 	$('#add-employee-form').show();
-// });
 
 function updateNavbarClass (className) {
 	$('nav')
