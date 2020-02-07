@@ -11,6 +11,10 @@ body {
     cursor: pointer;
   }
   
+  footer span {
+    flex-shrink: 0;
+    background-color:transparent;
+  }
 /* nav {
     margin-bottom: 100px;
   } */
