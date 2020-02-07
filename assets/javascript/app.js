@@ -25,7 +25,7 @@ var themes = [
 
 $(document).ready(function () {
 
-	// $("#employee-table").DataTable({
+	// $("#current-employees").DataTable({
 	// 	"scrollY": "200px",
 	// 	"scrollCollapse": true,
 	// 	});
