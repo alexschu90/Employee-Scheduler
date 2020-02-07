@@ -40,11 +40,22 @@ $(document).ready(function () {
 		);
 	});
 	$('#add-employee-form').hide();
+	$('#calandar').hide()
 });
 
-// Handless hiding the employee submit form when teh user clicks the done button
-$('#show-form').on('click', function () {
-	$('#add-employee-form').show();
+// shows the add employee form when clicked in the navbar 
+// $('#show-form').on('click', function () {
+// 	$('#add-employee-form').show();
+// });
+$('.nav-item').on('click', function () {
+	// $('#add-employee-form').hide();
+	// $('#calandar').hide()
+	// $('#current-employees').hide()
+	$(".showhide").hide()
+	item = $(this).attr('data-show-this')
+	console.log(item)
+	$(item).show()
+
 });
 
 $('#hide-employee-form').on('click', function () {
@@ -63,7 +74,7 @@ function updateNavbarClass (className) {
 
 	fixBodyMargin(className);
 }
-
+// sets the navbar to the left or right 
 function fixBodyMargin (className) {
 	if (/fixed-(left|right)/.test(className)) {
 		$('body').removeAttr('style');
