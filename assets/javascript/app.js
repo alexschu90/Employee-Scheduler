@@ -42,6 +42,7 @@ $(document).ready(function () {
 	$('#add-employee-form').hide();
 });
 
+// Handless hiding the employee submit form when teh user clicks the done button
 $('#show-form').on('click', function () {
 	$('#add-employee-form').show();
 });
