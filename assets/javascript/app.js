@@ -42,6 +42,7 @@ $(document).ready(function () {
 	$('#add-employee-form').hide();
 	$('#calandar').hide()
 });
+
 // shows the add employee form when clicked in the navbar 
 // $('#show-form').on('click', function () {
 // 	$('#add-employee-form').show();
@@ -54,6 +55,7 @@ $('.nav-item').on('click', function () {
 	item = $(this).attr('data-show-this')
 	console.log(item)
 	$(item).show()
+
 });
 
 $('#hide-employee-form').on('click', function () {
