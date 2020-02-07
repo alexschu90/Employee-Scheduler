@@ -38,29 +38,38 @@ $('#submit-employee').on('click', function (event) {
 		console.log("is this a valid email? " + emailPattern.test(email))
 		return emailPattern.test(email);
 	};
+	if (validPhoneNumber(phone) === false) {
+		badPhWarn = $("<p id = 'ph-warn' style='color:#ff0000'>Please enter a valid phone-number!</p>")
+		$("#ph-input").append(badPhWarn)
+	} else {
+		$("#ph-warn").empty()
+	}
+	if (validEmailAdress(email) === false) {
+		badEmWarn = $("<p id = 'em-warn' style='color:#ff0000'>Please enter a valid email address!</p>")
+		$("#em-input").append(badEmWarn)
+	} else {
+		$("#em-warn").empty()
+	}
 
-	// /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
-	if (validPhoneNumber(phone) === true) {
-		if (validEmailAdress(email) === true) {
-			var newEmployee = {
-				employeeName: employeeName,
-				role: role,
-				phone: phone,
-				email: email
-			}
+	if (validPhoneNumber(phone) === true && validEmailAdress(email) === true) {
+
+		var newEmployee = {
+			employeeName: employeeName,
+			role: role,
+			phone: phone,
+			email: email
+		}
+
+		database.ref().push(newEmployee);
+
+		$('#employee-name').val('');
+		$('#role').val('');
+		$('#phone-number-form').val('');
+		$('#email-form').val('');
+	}
 
 
-			database.ref().push(newEmployee);
 
-			$('#employee-name').val('');
-			$('#role').val('');
-			$('#phone-number-form').val('');
-			$('#email-form').val('');
-
-			// FIX THIS  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		} else { alert(email + " is not a valid email address!") }
-		console.log(phone + " is a valid phone number")
-	} else { alert(phone + " is not a valid phone-number!") }
 });
 database.ref().on('child_added', function (childSnapshot, prevChildKey) {
 	console.log(childSnapshot.val());
