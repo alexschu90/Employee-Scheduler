@@ -11,6 +11,17 @@ body {
     cursor: pointer;
   }
   
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+
+
   footer span {
     flex-shrink: 0;
     background-color:transparent;

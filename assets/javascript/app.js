@@ -24,6 +24,14 @@ var themes = [
 ];
 
 $(document).ready(function () {
+
+	// $("#current-employees").DataTable({
+	// 	"scrollY": "200px",
+	// 	"scrollCollapse": true,
+	// 	});
+	// 	$('.dataTables_length').addClass('bs-select');
+	// 	});
+
 	$('[data-class]').click(function () {
 		updateNavbarClass($(this).attr('data-class'));
 	});
@@ -52,6 +60,17 @@ $('#show-form').on('click', function () {
 // 	item = $(this).attr('data-show-this')
 // 	console.log(item)
 // 	$(item).show()
+// });
+
+// $('.nav-item').on('click', function () {
+// 	// $('#add-employee-form').hide();
+// 	// $('#calandar').hide()
+// 	// $('#current-employees').hide()
+// 	$(".showhide").hide()
+// 	item = $(this).attr('data-show-this')
+// 	console.log(item)
+// 	$(item).show()
+
 // });
 
 $('#hide-employee-form').on('click', function () {
