@@ -1,4 +1,15 @@
 // Branden has firebase control
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://pozzad-email-validator.p.rapidapi.com/emailvalidator/validateEmail/john%2540gmail.com",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "pozzad-email-validator.p.rapidapi.com",
+		"x-rapidapi-key": "c388bad2ddmshe28e07e5b16dc28p1a0c5djsnafe9a65d329c"
+	}
+}
+
 var firebaseConfig = {
 	apiKey: firebase.apiKey,
 	authDomain: 'employee-scheduler-402b9.firebaseapp.com',
@@ -33,10 +44,17 @@ $('#submit-employee').on('click', function (event) {
 	};
 	// This function checks the eMail field and if it's a valid eMail address, returns true. 
 	function validEmailAdress(email) {
+		$.ajax(settings).done(function (response) {
+			console.log(response);
+			var res = response;
+			console.log(res);
+		});
+
 		var emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		console.log("local variable email = " + email)
 		console.log("is this a valid email? " + emailPattern.test(email))
 		return emailPattern.test(email);
+
 	};
 
 	// /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
