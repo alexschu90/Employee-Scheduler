@@ -24,6 +24,14 @@ var themes = [
 ];
 
 $(document).ready(function () {
+
+	// $("#employee-table").DataTable({
+	// 	"scrollY": "200px",
+	// 	"scrollCollapse": true,
+	// 	});
+	// 	$('.dataTables_length').addClass('bs-select');
+	// 	});
+
 	$('[data-class]').click(function () {
 		updateNavbarClass($(this).attr('data-class'));
 	});
@@ -40,23 +48,24 @@ $(document).ready(function () {
 		);
 	});
 	$('#add-employee-form').hide();
-	$('#current-employees').hide()
+	// $('#current-employees').hide()
 });
 
 // shows the add employee form when clicked in the navbar 
-// $('#show-form').on('click', function () {
-// 	$('#add-employee-form').show();
-// });
-$('.nav-item').on('click', function () {
-	// $('#add-employee-form').hide();
-	// $('#calandar').hide()
-	// $('#current-employees').hide()
-	$(".showhide").hide()
-	item = $(this).attr('data-show-this')
-	console.log(item)
-	$(item).show()
-
+$('#show-form').on('click', function () {
+	$('#add-employee-form').show();
 });
+
+// $('.nav-item').on('click', function () {
+// 	// $('#add-employee-form').hide();
+// 	// $('#calandar').hide()
+// 	// $('#current-employees').hide()
+// 	$(".showhide").hide()
+// 	item = $(this).attr('data-show-this')
+// 	console.log(item)
+// 	$(item).show()
+
+// });
 
 $('#hide-employee-form').on('click', function () {
 	$('#add-employee-form').hide();
