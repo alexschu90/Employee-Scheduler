@@ -1,14 +1,20 @@
-// var settings = {
-// 	"async": true,
-// 	"crossDomain": true,
-// 	"url": "https://pozzad-email-validator.p.rapidapi.com/emailvalidator/validateEmail/john%2540gmail.com",
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-host": "pozzad-email-validator.p.rapidapi.com",
-// 		"x-rapidapi-key": "c388bad2ddmshe28e07e5b16dc28p1a0c5djsnafe9a65d329c"
-// 	}
-// }
+var defaultClient = cloudmersiveValidateApiClient.ApiClient.instance;
 
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = "YOUR_API_KEY_HERE"
+
+var api = new cloudmersiveValidateApiClient.DomainApi()
+
+var domain = "cloudmersive.com"; // {String} Domain name to check, for example \"cloudmersive.com\".  The input is a string so be sure to enclose it in double-quotes.
+
+
+var callback = function (error, data, response) {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + data);
+    }
+};
+
+api.domainCheck(domain, callback);

@@ -47,7 +47,12 @@ $('#submit-employee').on('click', function (event) {
 		$.ajax(settings).done(function (response) {
 			console.log(response);
 			var res = response;
-			console.log(res);
+			if (res === false) {
+				alert("not a valid email")
+				return false
+			} if (res === true) {
+			return true
+			}
 		});
 
 		var emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
