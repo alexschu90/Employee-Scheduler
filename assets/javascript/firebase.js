@@ -24,7 +24,6 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 
-
 $('#submit-employee').on('click', function (event) {
 	// Prevent the default form submit behavior
 	event.preventDefault();
@@ -33,6 +32,8 @@ $('#submit-employee').on('click', function (event) {
 	var role = $('#role').val().trim();
 	var phone = $('#phone-number-form').val().trim();
 	var email = $('#email-form').val().trim();
+	var emWarnStatus = false
+	var phWarnStatus = false
 
 
 	// This function checks the phone field and if it's a valid phone-number, returns true. 
@@ -56,32 +57,50 @@ $('#submit-employee').on('click', function (event) {
 		return emailPattern.test(email);
 
 	};
+	// this adds the warning text if our phonenumber is invalid 
+	if (validPhoneNumber(phone) === false) {
+		if (phWarnStatus === false) {
+			badPhWarn = $("<p id = 'ph-warn' style='color:#ff0000'>Please enter a valid phone-number!</p>")
+			$("#ph-input").append(badPhWarn)
+			phWarnStatus = true
+		}
+	} else {
+		$("#ph-warn").empty()
+		phWarnStatus = false
+	}
+	// this adds the warning text if our email is invalid 
+	if (validEmailAdress(email) === false) {
+		if (emWarnStatus === false) {
+		badEmWarn = $("<p id = 'em-warn' style='color:#ff0000'>Please enter a valid email address!</p>")
+		$("#em-input").append(badEmWarn)
+		emWarnStatus = true
+		}
+	} else {
+		$("#em-warn").empty()
+		emWarnStatus = false
+	}
+	// if we have both a valid phone number AND a valid email address, post fields to firebase as one object and clear the fields 
+	if (validPhoneNumber(phone) === true && validEmailAdress(email) === true) {
 
-	// /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
-	if (validPhoneNumber(phone) === true) {
-		if (validEmailAdress(email) === true) {
-			var newEmployee = {
-				employeeName: employeeName,
-				role: role,
-				phone: phone,
-				email: email
-			}
+		var newEmployee = {
+			employeeName: employeeName,
+			role: role,
+			phone: phone,
+			email: email
+		}
+
+		database.ref().push(newEmployee);
+
+		$('#employee-name').val('');
+		$('#role').val('');
+		$('#phone-number-form').val('');
+		$('#email-form').val('');
+	}
 
 
-			database.ref().push(newEmployee);
 
-			$('#employee-name').val('');
-			$('#role').val('');
-			$('#phone-number-form').val('');
-			$('#email-form').val('');
-
-			// FIX THIS  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		} else { alert(email + " is not a valid email address!") }
-		console.log(phone + " is a valid phone number")
-	} else { alert(phone + " is not a valid phone-number!") }
 });
 database.ref().on('child_added', function (childSnapshot, prevChildKey) {
-	console.log(childSnapshot.val());
 
 	// Store everything into a variable.
 	var eName = childSnapshot.val().employeeName;
