@@ -18,3 +18,28 @@ body {
 /* nav {
     margin-bottom: 100px;
   } */
+  .showhide {
+    font-family: 'Comfortaa', cursive;
+    font-size: medium;
+    z-index: 1;
+  }
+  #employee-table, .form-group {
+    font-family: 'Changa', sans-serif;
+    font-weight: bold;
+    font-size: large;
+  }
+  .nav-item {
+    font-family: 'Comfortaa', cursive;
+  }
+  .footer {
+    font-family: 'Geo', sans-serif;
+    color: lightslategray;
+  }
+  #highres-header-image-div{
+    float: left;
+    width: 100%;
+    z-index: -1;
+  }
+  #highres-header-image {
+    width: 100%;
+  }
