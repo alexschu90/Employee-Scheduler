@@ -1,14 +1,14 @@
 // Branden has firebase control
-var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://pozzad-email-validator.p.rapidapi.com/emailvalidator/validateEmail/john%2540gmail.com",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "pozzad-email-validator.p.rapidapi.com",
-		"x-rapidapi-key": "c388bad2ddmshe28e07e5b16dc28p1a0c5djsnafe9a65d329c"
-	}
-}
+// var settings = {
+// 	"async": true,
+// 	"crossDomain": true,
+// 	"url": "https://pozzad-email-validator.p.rapidapi.com/emailvalidator/validateEmail/john%2540gmail.com",
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "pozzad-email-validator.p.rapidapi.com",
+// 		"x-rapidapi-key": "c388bad2ddmshe28e07e5b16dc28p1a0c5djsnafe9a65d329c"
+// 	}
+// }
 
 var firebaseConfig = {
 	apiKey: firebase.apiKey,
@@ -45,11 +45,11 @@ $('#submit-employee').on('click', function (event) {
 	};
 	// This function checks the eMail field and if it's a valid eMail address, returns true. 
 	function validEmailAdress(email) {
-		$.ajax(settings).done(function (response) {
-			console.log(response);
-			var res = response.isValid;
-			console.log(res);
-		});
+		// $.ajax(settings).done(function (response) {
+		// 	console.log(response);
+		// 	var res = response.isValid;
+		// 	console.log(res);
+		// });
 
 		var emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		console.log("local variable email = " + email)
@@ -71,9 +71,9 @@ $('#submit-employee').on('click', function (event) {
 	// this adds the warning text if our email is invalid 
 	if (validEmailAdress(email) === false) {
 		if (emWarnStatus === false) {
-		badEmWarn = $("<p id = 'em-warn' style='color:#ff0000'>Please enter a valid email address!</p>")
-		$("#em-input").append(badEmWarn)
-		emWarnStatus = true
+			badEmWarn = $("<p id = 'em-warn' style='color:#ff0000'>Please enter a valid email address!</p>")
+			$("#em-input").append(badEmWarn)
+			emWarnStatus = true
 		}
 	} else {
 		$("#em-warn").empty()
