@@ -1,8 +1,11 @@
 // Branden has firebase control
+// global vars
+var globalEmail = "";
+
 var settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://pozzad-email-validator.p.rapidapi.com/emailvalidator/validateEmail/john%2540gmail.com",
+	"url": "https://pozzad-email-validator.p.rapidapi.com/emailvalidator/validateEmail/" + globalEmail,
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "pozzad-email-validator.p.rapidapi.com",
@@ -32,6 +35,7 @@ $('#submit-employee').on('click', function (event) {
 	var role = $('#role').val().trim();
 	var phone = $('#phone-number-form').val().trim();
 	var email = $('#email-form').val().trim();
+	globalEmail = email;
 	var emWarnStatus = false
 	var phWarnStatus = false
 
@@ -44,7 +48,7 @@ $('#submit-employee').on('click', function (event) {
 		return phoneNumberPattern.test(phone);
 	};
 	// This function checks the eMail field and if it's a valid eMail address, returns true. 
-	function validEmailAdress(email) {
+	function validEmailAdress(globalEmail) {
 		$.ajax(settings).done(function (response) {
 			console.log(response);
 			var res = response.isValid;
