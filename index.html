@@ -12,21 +12,20 @@
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    
+
     <!-- CSS styles  -->
 
-    <link rel="stylesheet"
-    id="theme_link"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/materia/bootstrap.min.css"/>
+    <link rel="stylesheet" id="theme_link"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/materia/bootstrap.min.css" />
 
-    <link href="https://fonts.googleapis.com/css?family=Changa|Comfortaa|Geo&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Changa|Comfortaa|Geo&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/64c46d2f00.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="assets/css/navbar-fixed-right.min.css">
     <link rel="stylesheet" href="assets/css/navbar-fixed-left.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
-
-
 
 </head>
 
@@ -101,12 +100,6 @@
     <!-- page container -->
 
     <div class="container clearfix" id="container">
-
-
-        <!-- Jumbotron -->
-        <!-- <div class="jumbotron bg-primary">
-            <h1 class="header text-center text-white display-4">Employee Scheduler</h1>
-        </div>  -->
         <div class="row">
             <div id="highres-header-image-div">
                 <img id="highres-header-image" src="./assets/images/wallpaperflare.com_wallpaper.jpg"
@@ -116,12 +109,10 @@
 
 
         <!-- Employee Table id="employee-table"-->
-        <div class="container float-left col-5 border border-dark rounded bg-white my-2 pb-2 showhide"
+        <div class="container float-left col-6 border border-dark rounded bg-white my-2 pb-2 showhide"
             id="current-employees">
             <div class="row">
-                <div class="col-lg-12 top text-light bg-primary p-2 pb-0">
-                    Current Employees
-                </div>
+                <div class="col-lg-12 top text-light bg-primary p-2 pb-0">Current Employees</div>
             </div>
             <div class="row table-wrapper-scroll-y my-custom-scrollbar">
                 <div class="col-5">
@@ -135,27 +126,37 @@
                             </tr>
                         </thead>
                         <tbody id="employees">
-                            <tr class="table-info">
-
-                            </tr>
-
+                            <tr class="table-info"></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
+        <div class="container float-right col-5 border border-dark rounded bg-white my-2 pb-2 showhide">
+            <div class="row">
+                <div class="col-sm-12 bg-primary text-light mb-2">
+                    Access by date
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="string" id="date" placeholder="2020-01-01">
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" id="list-booking" class="btn btn-outline-dark">List Schedule</button>
+                </div>
+            </div>
+            <div id="result-box">
+                <div class="row" id="list-view">
+                    <!-- this is where the json wil go -->
+                </div>
+            </div>
+        </div>
         <br>
 
         <!-- form container -->
-
-
-
         <div id="add-employee-form" class="container float-left border border-dark bg-white rounded my-2 pb-2 showhide">
-
-
-
-
             <div class="row">
                 <div id="add-employee" class="col-lg-12 top text-light bg-primary p-2">Add Employee</div>
             </div>
@@ -184,16 +185,12 @@
             <div class="row">
                 <div class="col-lg-10">
                     <button type="button" id="submit-employee" class="btn btn-outline-dark">Add Employee</button>
-
                     <button type="button" id="hide-employee-form" class="btn btn-outline-dark">Done</button>
                 </div>
             </div>
         </div>
         <br>
-        <div>
-            <button type="button" id="list-booking" class="btn btn-outline-dark">List current bookings</button>
 
-        </div>
         <!-- schedule container -->
         <div class="container float-left border border-dark bg-white rounded my-2 pb-2 showhide" id="calandar">
             <div class="row">
@@ -205,12 +202,6 @@
                 <iframe src="https://www.supersaas.com/schedule/employee-scheduler/work" width="100%" height="800">
                 </iframe>
             </div>
-
-            <!-- button to send schedule to emplyees -->
-            <div class="col-lg-10">
-                <button type="button" id="send-schedule" class="btn btn-outline-dark">Send Scheule</button>
-            </div>
-
         </div>
     </div>
     <br><br>
@@ -220,27 +211,18 @@
         <span>Copyright ©</span>
     </footer>
 
-
-
     <script src="assets/javascript/config.js"></script>
     <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/email.js"></script>
     <script src="assets/javascript/firebase.js"></script>
 
-    <!-- https://code.jquery.com/jquery-3.4.1.slim.min.js -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>  
-    
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-    
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdn.cloudmersive.com/jsclient/cloudmersive-validate-client.js"></script>
-
-<!-- Font Awesome CDN -->
-<script src="https://kit.fontawesome.com/64c46d2f00.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -120,9 +120,9 @@ function selectTheme(theme) {
 $("#list-booking").on("click", function () {
 
 	var proxy = 'https://cors-anywhere.herokuapp.com/';
-
+	var date = $("#date").val().trim();
 	$.ajax({
-		url: proxy + "https://www.supersaas.com/api/range/465392.json?api_key=ZHiiZGa0u1W3uNPsm2UWCw",
+		url: proxy + "https://www.supersaas.com/api/range/465392.json?from=" + date + "&api_key=ZHiiZGa0u1W3uNPsm2UWCw",
 		type: 'GET',
 		contentType: "application/json",
 		headers: {
@@ -136,13 +136,27 @@ $("#list-booking").on("click", function () {
 		}
 	}).then(function (response) {
 		console.log(response);
+		for (let i = 0; i < response.slots.length; i++) {
+			let slotDiv = $("<div class= 'card top'>");
+
+			let title = response.slots[i].title;
+			let start = response.slots[i].start;
+			let finish = response.slots[i].finish;
+
+			let titleOne = $("<h5 class='card-title'>").text(title);
+			let startOne = $("<p class='card-text'>").text("Start time: " + start);
+			let finishOne = $("<p class='card-text'>").text("Finish time: " + finish);
+
+			slotDiv.append(titleOne);
+			slotDiv.append(startOne);
+			slotDiv.append(finishOne);
+
+			let check = $('#list-view').append(slotDiv);
+			$("#result-box").append(check);
+		}
 	});
 
 })
-
-
-
-
 
 
 $("#submit-employee").on("click", function () {
