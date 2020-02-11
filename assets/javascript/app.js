@@ -179,7 +179,12 @@ $("#submit-employee").on("click", function () {
 		console.log(response);
 		var res = response.isValid;
 		console.log(res);
-		return res;
+
+		if (res) {
+			$("#em-input").append("<p>&#10004");
+		} else {
+			$("#em-input").append(" X");
+		}
 	});
 })
 
