@@ -45,6 +45,7 @@ body {
   .footer {
     font-family: 'Geo', sans-serif;
     color: lightslategray;
+    position: fixed; 
   }
   #highres-header-image-div{
     float: left;
