@@ -109,7 +109,7 @@
 
 
         <!-- Employee Table id="employee-table"-->
-        <div class="container float-left col-5 border border-dark rounded bg-white my-2 pb-2 showhide"
+        <div class="container float-left col-6 border border-dark rounded bg-white my-2 pb-2 showhide"
             id="current-employees">
             <div class="row">
                 <div class="col-lg-12 top text-light bg-primary p-2 pb-0">Current Employees</div>
@@ -135,6 +135,11 @@
 
         <div class="container float-right col-5 border border-dark rounded bg-white my-2 pb-2 showhide">
             <div class="row">
+                <div class="col-sm-12 bg-primary text-light mb-2">
+                    Access by date
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-6">
                     <input type="string" id="date" placeholder="2020-01-01">
                 </div>
@@ -142,8 +147,8 @@
                     <button type="button" id="list-booking" class="btn btn-outline-dark">List Schedule</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12" id="list-view">
+            <div id="result-box">
+                <div class="row" id="list-view">
                     <!-- this is where the json wil go -->
                 </div>
             </div>
